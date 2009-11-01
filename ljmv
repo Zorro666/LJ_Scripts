@@ -1,0 +1,7 @@
+#! /bin/bash
+
+for i in `ls Core*.*`;
+do
+	newfile=${i/Core/LJ_}
+	mv -v $i $newfile
+done

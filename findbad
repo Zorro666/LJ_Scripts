@@ -1,0 +1,10 @@
+echo "=== Unsigned ==="
+grep -R "unsigned" . | grep -v .swp
+echo "=== int ==="
+grep -R "int" . | grep -v .swp | grep -v "LJ_int" | grep -v "LJ_uint"
+echo "=== char ==="
+grep -R "char" . | grep -v .swp | grep -v "LJ_char" | grep -v "LJ_uchar"
+echo "=== float ==="
+grep -R "float" . | grep -v .swp | grep -v "LJ_float" 
+echo "=== double ==="
+grep -R "double" . | grep -v .swp | grep -v "LJ_double" 

@@ -1,0 +1,4 @@
+#! /bin/bash
+
+kill -KILL `pgrep gnome-power-man`
+gnome-power-manager

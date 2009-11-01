@@ -1,0 +1,38 @@
+#! /bin/bash
+
+#set -x
+
+autorun=0
+function ask()
+{
+	cmd="$*"
+	if [ $autorun -eq 0 ]; then
+		echo -n "Run '$cmd' [*y*/n/a] ? "
+		read answer
+	fi
+	run=1
+	if [ "$answer" == "a" ]; then
+		autorun=1
+	fi
+	if [ "$answer" == "n" ]; then
+		run=0
+	fi
+	if [ $run -eq 1 ]; then
+		$cmd
+		result=$?
+		if [ $result -ne 0 ]; then
+			echo "'$cmd' failed"
+			autorun=0
+			return $result;
+		fi
+	fi
+}
+
+cd ~/Apps/git
+pwd
+ask nice time git pull
+ask nice time make configure
+ask nice time ./configure --prefix=/usr
+ask nice time make all doc
+ask nice time sudo make install install-doc install-html
+git --version
