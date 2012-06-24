@@ -28,14 +28,12 @@ function ask()
 	fi
 }
 
-cd ~/Apps/git
+cd ~/Apps/go/src
 pwd
-old_git=`git --version`
-ask nice time git pull
-ask nice time make configure
-ask nice time ./configure --prefix=/usr
-ask nice time make all doc
-ask nice time sudo make install install-doc install-html
-new_git=`git --version`
-echo "old_git:" $old_git
-echo "new_git": $new_git
+old_go=`go version`
+ask nice time hg pull
+ask nice time hg update release
+ask nice time ./all.bash
+new_go=`go version`
+echo "old_go:" $old_go
+echo "new_go": $new_go
